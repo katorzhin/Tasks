@@ -1,6 +1,6 @@
 package HeadFirst;
 
-public class SimpleDotCom {
+public class DotCom {
     private int[] locationCells;
     private int numOfHits = 0;
 
