@@ -10,7 +10,7 @@ public class Task28 {
         int[] newArray = new int[array.length + 1];
         for (int i = 0; i < array.length; i++) {
             if (b > array[i] && array[i + 1] > b) {
-                index = array[i] + 1;
+                index = i + 1;
 
             }
         }
