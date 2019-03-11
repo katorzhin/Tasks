@@ -3,6 +3,12 @@ package Tasks;
 import java.util.Scanner;
 
 public class AreaOfTriangle {
+    public static double Square(double side1, double side2, double side3) {
+        double perimeter = (side1 + side2 + side3) / 2;
+        double square = Math.sqrt(perimeter * (perimeter - side1) * (perimeter - side2) * (perimeter - side3));
+        return square;
+    }
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter the side A of the triangle:");
@@ -14,10 +20,10 @@ public class AreaOfTriangle {
         System.out.println("Enter the side C of the triangle: ");
         double sideC = scanner.nextDouble();
 
-        double perimeter2 = (sideA + sideB + sideC) / 2;
+        System.out.println("The area of a triangle is: " + Square(sideA, sideB, sideC));
 
-        double square = Math.sqrt(perimeter2 * (perimeter2 - sideA) * (perimeter2 - sideB) * (perimeter2 - sideC));
 
-        System.out.println("The area of a triangle is: "+ square);
     }
+
+
 }
