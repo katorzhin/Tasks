@@ -7,7 +7,7 @@ public class Task1ArrayMultiplesK {
         int k = 2;
         for (int i = 0; i < array.length; i++) {
             if (array[i] % k == 0) {
-                sum += array[i]+k;
+                sum += array[i];
                 System.out.println(sum);
             }
 
