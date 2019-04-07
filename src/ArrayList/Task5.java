@@ -14,6 +14,7 @@ public class Task5 {
         for (int i = 0; i < arrayList.size(); i++) {
             if (arrayList.get(i) % 2 == 0) {
 
+                arrayList.get(i);
                 newArrayList.add(i);
 
             }
