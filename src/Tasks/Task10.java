@@ -17,9 +17,9 @@ public class Task10 {
                 min = array[i];
             }
         }
-        sv = max;
-        max = min;
-        min = sv;
+        sv = array[max];
+        array[max] = array[min];
+        array[min]= sv;
         System.out.println(max);
         System.out.println(min);
     }
