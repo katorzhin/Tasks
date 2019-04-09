@@ -1,86 +1,52 @@
+import java.util.Arrays;
 import java.util.Scanner;
 
-public class MagicSquare
-{
+public class MagicSquare {
+    public static void main(String[] args) {
 
+        Scanner scanner = new Scanner(System.in);
 
-    public static void print(int[][] a)
-    {
+        String firstLine = scanner.nextLine();
 
-        int i, j;
-        for (i = 0; i < a.length; i++)
-        {
-            for (j = 0; j < a.length; j++)
-            {
-                System.out.print("\t"+ a[i][j]);
+        String[] firstNumbers = firstLine.split("(\t| )");
+        int[][] array = new int[firstNumbers.length][firstNumbers.length];
+        int raw = 0;
+
+        for (int i = 0; i < firstNumbers.length; i++) {
+            array[raw][i] = Integer.parseInt(firstNumbers[i]);
+        }
+        raw++;
+        while (raw < firstNumbers.length) {
+            String nextLine = scanner.nextLine();
+            String[] numbers = nextLine.split("(\t| )");
+            for (int i = 0; i < numbers.length; i++) {
+                array[raw][i] = Integer.parseInt(numbers[i]);
             }
-            System.out.println();
+            raw++;
+        }
+        int[] result = new int[firstNumbers.length * 2 + 2];
+        for (int i = 0; i < array.length; i++) {
+            int sum = 0;
+            for (int j = 0; j < array[i].length; j++) {
+                sum += array[i][j];
+
+
+            }
+            result[i] = sum;
 
         }
-
-    }
-
-
-
-    public static void print(int[] a)
-    {
-        int i;
-        for (i = 0; i < a.length; i++)
-        {
-            System.out.print("\t"+ a[i]);
-        }
-        System.out.println();
-    }
-
-    public static boolean isMagicSquare(int[][] a)
-    {
-        int[] si = new int[a.length];
-        int[] sj = new int[a.length];
-        int[] sd = new int[a.length];
-
-        int i, j;
-        for (i = 0; i < a.length; i++)
-        {
-            for (j = 0; j < a.length; j++)
-            {
-                si[i] += a[i][j];
-                sj[j] += a[i][j];
+        int sumOfDiagonal = 0;
+        for (int i = 0; i < array[0].length; i++) {
+            for (int j = 0; j < array.length; j++) {
+                if (i == j) {
+                    sumOfDiagonal += array[i][j];
+                }
             }
         }
-        for (i = 0; i < a.length; i++)
-        {
-            sd[0] += a[i][i];
-            sd[1] += a[i][a.length - 1 - i];
-        }
-        System.out.print("si: ");
-        print(si);
-        System.out.print("sj: ");
-        print(sj);
-        System.out.print("sd: ");
-        print(sd);
-        int t = si[0];
-        for (i = 0; i < a.length; i++)
-        {
-            if (t != si[i] || t != sj[i])
-            {
-                return false;
-            }
-        }
-        if (sd[0] != t || sd[1] != t)
-        {
-            return false;
-        }
 
-        return true;
-    }
-
-    public static void main(String[] args)
-    {
-        int[][] a = { { 6, 1, 2, }, { 1, 5, 3, }, { 2, 5, 4, }, };
-
-        print(a);
-        System.out.println("isMagicSquare(a) = " + isMagicSquare(a));
-
+        System.out.println(sumOfDiagonal);
 
     }
+
 }
+
