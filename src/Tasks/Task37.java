@@ -18,7 +18,7 @@ public class Task37 {
             }
         }
 
-        int[] evenArays = new int[evenCounter];
+           int[] evenArays = new int[evenCounter];
         int evenIndex = 0;
         int oddIndex = 0;
         int[] oddArrays = new int[oddCounter];
