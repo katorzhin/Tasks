@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class UniqueNumbers {
     public static void main(String[] args) {
-        int[] array = {1, 1, 1, 1, 3, 2, 5, 3, 4};
+        int[] array = {1, 4,5,1,1,3};
         int[] newArray = new int[array.length];
         int counter = 0;
         for (int i = 0; i < array.length; i++) {
