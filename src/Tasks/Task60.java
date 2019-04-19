@@ -12,7 +12,7 @@ public class Task60 {
             arrayC[i] = arrayA[i];
         }
         for (int i = 0; i < arrayB.length; i++) {
-            arrayC[5 + i] = arrayB[i];
+            arrayC[arrayA.length+i] = arrayB[i];
         }
 
         System.out.println(Arrays.toString(arrayC));
