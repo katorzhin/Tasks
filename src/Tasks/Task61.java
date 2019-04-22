@@ -4,6 +4,10 @@ import java.util.Arrays;
 
 public class Task61 {
     public static void main(String[] args) {
+        /*
+        В массиве А каждый элемент равен 0, 1, 2. Переставить элементы массива так,
+        чтобы сначала располагались все нули, затем все единицы, и, наконец все двойки.
+         */
         int[] array = {3, 2, 1, 2, 0, 3, 1, 0, 3, 2};
         int tmp;
         boolean isSorted = false;
