@@ -1,6 +1,6 @@
 package Tasks;
 
-public class Task58 {
+public class Task59 {
     public static void main(String[] args) {
         /*
         Дан массив из n четырехзначных натуральных чисел.
