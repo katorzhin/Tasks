@@ -1,9 +1,58 @@
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
 public class MagicSquare {
     public static void main(String[] args) {
+        ArrayList<Integer> sums = new ArrayList<>();
+        int[][] array = readSquare();
 
+        calculateRaws(array, sums);
+        calculateColumns(array, sums);
+        calculateDiagonals(array, sums);
+
+        System.out.println(sums);
+
+    }
+
+    private static void calculateColumns(int[][] array, ArrayList<Integer> sums) {
+        for (int i = 0; i < array.length; i++) {
+            int sum = 0;
+            for (int j = 0; j < array[i].length; j++) {
+                sum += array[j][i];
+            }
+            sums.add(sum);
+        }
+    }
+
+    private static void calculateDiagonals(int[][] array, ArrayList<Integer> sums) {
+        int sumOfDiagonal1 = 0;
+        for (int i = 0; i < array.length; i++) {
+            sumOfDiagonal1 += array[i][i];
+        }
+        sums.add(sumOfDiagonal1);
+
+
+        int sumOfDiagonal2 = 0;
+        for (int i = 0; i < array.length; i++) {
+            sumOfDiagonal2 += array[i][array.length - 1 - i];
+        }
+        sums.add(sumOfDiagonal2);
+    }
+
+    private static void calculateRaws(int[][] array, ArrayList<Integer> result) {
+        for (int i = 0; i < array.length; i++) {
+            int sum = 0;
+            for (int j = 0; j < array[i].length; j++) {
+                sum += array[i][j];
+
+
+            }
+            result.add(sum);
+        }
+    }
+
+    private static int[][] readSquare() {
         Scanner scanner = new Scanner(System.in);
 
         String firstLine = scanner.nextLine();
@@ -24,29 +73,7 @@ public class MagicSquare {
             }
             raw++;
         }
-        int[] result = new int[firstNumbers.length * 2 + 2];
-        for (int i = 0; i < array.length; i++) {
-            int sum = 0;
-            for (int j = 0; j < array[i].length; j++) {
-                sum += array[i][j];
-
-
-            }
-            result[i] = sum;
-
-        }
-        int sumOfDiagonal = 0;
-        for (int i = 0; i < array[0].length; i++) {
-            for (int j = 0; j < array.length; j++) {
-                if (i == j) {
-                    sumOfDiagonal += array[i][j];
-                }
-            }
-        }
-
-        System.out.println(sumOfDiagonal);
-
+        return array;
     }
 
 }
-
