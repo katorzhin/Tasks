@@ -21,9 +21,7 @@ public class Pascal {
                 p[i][j] = p[i - 1][j - 1] + p[i - 1][j];
             }
         }
-
         print();
-
     }
 
     public static void print()
@@ -40,9 +38,7 @@ public class Pascal {
                 System.out.println();
 
             }
-
         }
-
     }
 
     public static void main(String[] args)
@@ -51,6 +47,5 @@ public class Pascal {
         int n = in.nextInt();
         showPascal(n);
     }
-
 }
 
