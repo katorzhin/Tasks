@@ -1,4 +1,4 @@
-package Tests.Interface.cooker;
+package Tests.Interface.Cafe;
 
 public class Cooker {
    private String name;
