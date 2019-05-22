@@ -1,25 +1,40 @@
 public class MarkDownParser {
+   public static String Emphasi(String oneStar) {
+        int index = 0;
+
+
+        if ((index = oneStar.indexOf('*', index)) != -1 ) {
+            oneStar = oneStar.substring(0, index) + "<em>" + oneStar.substring(index + 1);
+            index = oneStar.indexOf('*', index);
+            oneStar = oneStar.substring(0, index) + "</em>" + oneStar.substring(index + 1);
+        }
+        return "<p>"+oneStar+"</p>";
+
+    }
+    static void Header(String word) {
+        String tmp = "<p>" + word + "</p>";
+        for (int i = 0; i < word.length(); i++) {
+            char temp = word.charAt(i);
+            if (word.charAt(i) == '#') {
+                word = word.replaceAll("[#]", "");
+                word = word.replaceAll("[*]", "");
+                System.out.println("<html>\n" + "<body>\n" + "<h2>" + word + "</h2>");
+            } else {
+                word = word.replaceAll("[,]", "");
+
+            }
+        }
+
+    }
+    static void SimpleString(String string) {
+        System.out.println("<p>" + string + "</p>");
+    }
 
     public static void main(String[] args) {
-        String newWord= "*dsad* sdf sd f ds";
-        //newWord = newWord.trim(); // This would remove trailing and leading spaces
-        String [] words = newWord.split("\\s+"); //split them on spaces
-        StringBuffer sb = new StringBuffer();
-        for(int i=0;i<words.length;i++){
-            if (newWord.charAt(i)=='*') {
-                newWord = newWord.replaceAll("[*]", "");
-            }
-                sb.append("<em>");
-                sb.append(words[i]);
-                sb.append(' ');
+        Header("#Header line");
+        System.out.println(Emphasi("Simple line *with* em"));
 
-        }
-      //  if(words.length>0){
-        //    sb.append('$');
-          //  sb.append(words[words.length-1]);
-        //}
-        newWord = sb.toString();
-        System.out.println(newWord);
+
     }
 }
 
