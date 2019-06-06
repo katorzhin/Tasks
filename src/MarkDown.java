@@ -19,27 +19,32 @@ public class MarkDown {
         return "<p>"+ newLine.toString() + "</p>";
     }
 
-    static void header(String word) {
-        for (int i = 0; i < word.length(); i++) {
-            char temp = word.charAt(i);
-            if (word.charAt(i) == '#') {
-                word = word.replaceAll("[#]", "");
-                word = word.replaceAll("[*]", "");
-                System.out.println("<html>\n" + "<body>\n" + "<h2>" + word + "</h2>");
-            } else {
-                word = word.replaceAll("[,]", "");
+    static String header(String text) {
+        String headerWords = "<html>\n<body>\n";
+        for (int i = 0; i < text.length(); i++) {
+            if (text.charAt(0) == '#') {
+                text = text.replaceAll("[#]", "");
+                return headerWords + "<h1>" + text + "</h1>";
+            }
+                if (text.charAt(0) == '#' && text.charAt(1) == '#') {
+                    text = text.replaceAll("[#]", "");
+                    return headerWords + "<h2>" + text + "</h2>";
+                }
 
             }
+            return text;
         }
 
-    }
 
-    static void SimpleString(String string) {
+    static void simpleString(String string) {
         System.out.println("<p>" + string + "</p>");
     }
 
     public static void main(String[] args) {
-        System.out.println(emphasi("a*b*c     *gdsadasd* asdsadasd"));
+        String headerWords="<html>\n<body>";
+       // System.out.println(emphasi("a*b*c     *gdsadasd* asdsadasd"));
+        System.out.println(header("###dsad"));
+        //System.out.println(headerWords);
 
 
     }
