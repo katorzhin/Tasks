@@ -1,4 +1,4 @@
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+package arrayList;
 
 public class MyArrayList<E> {
     private E[] array;
