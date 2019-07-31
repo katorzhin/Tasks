@@ -64,6 +64,8 @@ public class NoughtsAndCrosses {
             currentPlayer = X;
         }
         //todo: check if someone won
+        searchWinner(array);
+    }
         
    public static void searchWinner(char[][] array) {
         for (int i = 0; i < 3; i++) {
