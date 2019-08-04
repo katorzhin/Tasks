@@ -64,7 +64,19 @@ public class NoughtsAndCrosses {
             currentPlayer = X;
         }
         //todo: check if someone won
+        searchWinner(array);
+    }
+        
+   public static void searchWinner(char[][] array) {
+        for (int i = 0; i < 3; i++) {
 
+            if (!(array[i][0]==0)) {
+                if (array[i][0] == array[i][1] && array[i][1] == array[i][2]) {
+                    System.out.println(array[0][0] + " win!");
+                }
+            }
+        }
+    }
         for (int i = 0; i < 3; i++) {
 
             if (!(array[i][0]==0)) {
@@ -74,16 +86,7 @@ public class NoughtsAndCrosses {
             }
         }
 
-
-
-
     }
-
-
-
-
-
-
 
     private static boolean validate(String turn) {
         if (turn.length() != 2) {
