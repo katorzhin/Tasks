@@ -1,15 +1,10 @@
 package noughtsAndCrosses;
 
-
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.sql.*;
 import java.util.HashMap;
 import java.util.Scanner;
 
-public class NoughtsAndCrosses {
-    static final char X = 'X';
+public class ZeroAndCrosses {
+    private static final char X = 'X';
     private static final char O = 'O';
     static final HashMap<Character, Integer> letterToCoord = new HashMap<Character, Integer>() {{
         put('A', 0);
@@ -20,22 +15,17 @@ public class NoughtsAndCrosses {
     public static char currentPlayer = X;
     public static boolean winnerExists = false;
 
-    public static void main(String[] args) throws SQLException {
+    public static void main(String[] args) {
 
         char[][] array = new char[3][3];
-        CSVLogger csvLogger =new CSVLogger("turns2.csv");
-
+        Scanner sc = new Scanner(System.in);
         while (!winnerExists) {
             printSquare(array);
-            nextTurn(array,csvLogger);
-
-
+            nextTurn(array, sc);
         }
     }
 
-    private static void nextTurn(char[][] array, CSVLogger csvLogger) {
-        Scanner scanner = new Scanner(System.in);
-
+    private static void nextTurn(char[][] array, Scanner scanner) {
         System.out.println("TURN of " + currentPlayer);
         final String turn = scanner.nextLine();
         final boolean isValid = validate(turn);
@@ -68,56 +58,19 @@ public class NoughtsAndCrosses {
             return;
         }
         array[letterCoord][numberCoord] = currentPlayer;
-        try {
-            csvLogger.logToFile(turn, currentPlayer);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
         if (currentPlayer == X) {
             currentPlayer = O;
         } else {
             currentPlayer = X;
         }
         //todo: check if someone won
-
         searchWinner(array);
 
 
     }
 
-
     public static void searchWinner(char[][] array) {
 
-        searchRow(array);
-        searchColumn(array);
-        searchDiagonal(array);
-    }
-
-    private static void searchDiagonal(char[][] array) {
-        if (array[1][1] != 0) {
-            if (array[0][0] == array[1][1] && array[1][1] == array[2][2]) {
-                System.out.println(array[1][1] + " win");
-                winnerExists = true;
-            }
-            if (array[0][2] == array[1][1] && array[1][1] == array[2][0]) {
-                System.out.println(array[1][1] + " win");
-                winnerExists = true;
-            }
-        }
-    }
-
-    private static void searchColumn(char[][] array) {
-        for (int i = 0; i < 3; i++) {
-            if (array[0][i] != 0) {
-                if (array[0][i] == array[1][i] && array[1][i] == array[2][i]) {
-                    System.out.println(array[0][i] + " win!");
-                    winnerExists = true;
-                }
-            }
-        }
-    }
-
-    private static void searchRow(char[][] array) {
         for (int i = 0; i < 3; i++) {
 
             if (array[i][0] != 0) {
@@ -126,6 +79,24 @@ public class NoughtsAndCrosses {
                     System.out.println(array[i][0] + " win!");
                     winnerExists = true;
                 }
+            }
+        }
+        for (int i = 0; i < 3; i++) {
+            if (array[0][i] != 0) {
+                if (array[0][i] == array[1][i] && array[1][i] == array[2][i]) {
+                    System.out.println(array[0][i] + " win!");
+                    winnerExists = true;
+                }
+            }
+        }
+        if (array[1][1] != 0) {
+            if (array[0][0] == array[1][1] && array[1][1] == array[2][2]) {
+                System.out.println(array[1][1] + " win");
+                winnerExists = true;
+            }
+            if (array[0][2] == array[1][1] && array[1][1] == array[2][0]) {
+                System.out.println(array[1][1] + " win");
+                winnerExists = true;
             }
         }
     }
