@@ -6,22 +6,24 @@ import java.util.Scanner;
 public class NoughtsAndCrosses {
     static final char X = 'X';
     private static final char O = 'O';
-    static final HashMap<Character, Integer> letterToCoord = new HashMap<>() {{
+    static final HashMap<Character, Integer> letterToCoord = new HashMap<Character, Integer>() {{
         put('A', 0);
         put('B', 1);
         put('C', 2);
     }};
 
     public static char currentPlayer = X;
+    public static boolean winnerExists = false;
 
     public static void main(String[] args) {
 
         char[][] array = new char[3][3];
         Scanner sc = new Scanner(System.in);
-        while (true) {
+        while (!winnerExists) {
             printSquare(array);
-
             nextTurn(array, sc);
+
+
         }
     }
 
@@ -65,27 +67,40 @@ public class NoughtsAndCrosses {
         }
         //todo: check if someone won
         searchWinner(array);
+
+
     }
-        
-   public static void searchWinner(char[][] array) {
+
+    public static void searchWinner(char[][] array) {
+
         for (int i = 0; i < 3; i++) {
 
-            if (!(array[i][0]==0)) {
+            if (array[i][0] != 0) {
+
                 if (array[i][0] == array[i][1] && array[i][1] == array[i][2]) {
-                    System.out.println(array[0][0] + " win!");
+                    System.out.println(array[i][0] + " win!");
+                    winnerExists = true;
                 }
             }
         }
-    }
         for (int i = 0; i < 3; i++) {
-
-            if (!(array[i][0]==0)) {
-                if (array[i][0] == array[i][1] && array[i][1] == array[i][2]) {
-                    System.out.println(array[0][0] + " win!");
+            if (array[0][i] != 0) {
+                if (array[0][i] == array[1][i] && array[1][i] == array[2][i]) {
+                    System.out.println(array[0][i] + " win!");
+                    winnerExists = true;
                 }
             }
         }
-
+        if (array[1][1] != 0) {
+            if (array[0][0] == array[1][1] && array[1][1] == array[2][2]) {
+                System.out.println(array[1][1] + " win");
+                winnerExists = true;
+            }
+            if (array[0][2] == array[1][1] && array[1][1] == array[2][0]) {
+                System.out.println(array[1][1] + " win");
+                winnerExists = true;
+            }
+        }
     }
 
     private static boolean validate(String turn) {
