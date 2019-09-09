@@ -90,16 +90,19 @@ public class Module4GoIt {
                 System.out.println("Введите ширину квадрата для третьего задания:");
                 int numberTask3 = scanner.nextInt();
                 drawRectangle(numberTask3);
+                break;
             case 4:
                 System.out.println("Введите первое число для четвертого задания:");
                 int numberFirstTask4 = scanner.nextInt();
                 System.out.println("Введите второе число для четвертого задания:");
                 int numberSecondTask4 = scanner.nextInt();
                 getMax(numberFirstTask4, numberSecondTask4);
+                break;
             case 5:
                 System.out.println("Введите число для 5-го задания:");
                 int numberTask5 = scanner.nextInt();
                 System.out.println(countNumbersWithoutCycle(numberTask5));
+                break;
         }
     }
 }
