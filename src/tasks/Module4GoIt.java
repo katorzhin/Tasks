@@ -120,12 +120,15 @@ public class Module4GoIt {
 
     static void propose() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Желаете продолжить? Да -> 1, выход -> 0");
+        System.out.println("Желаете продолжить? \nДа -> 1, выход -> 0");
         int choose = scanner.nextInt();
         if (choose == 1) {
             chooseTask();
         } else if (choose == 0) {
             System.out.println("Good bye!");
+        } else if (choose != 1 || choose != 0) {
+            System.out.println("Не правильный ввод!");
+            propose();
         }
 
     }
