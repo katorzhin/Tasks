@@ -17,20 +17,43 @@ public class PerfomanceChecker {
     }
     static void checkReading(int count){
         List<Integer>list=new ArrayList<>();
-        Random random = new Random((int)Math.random()*count);
+        //Random random = new Random();
+        int random = (int)Math.random()* ++count;
         for (int i = 0; i < count; i++) {
             list.add(i+1);
         }
         long startTime = System.currentTimeMillis();
         for (int i = 0; i < count; i++) {
             list.get(random);
+           System.out.print(list.get(random)+" ");
         }
-
+        long finishTime = System.currentTimeMillis();
+        System.out.println("\nTime work = "+(finishTime-startTime)+" ms");
     }
+    static void checkRemoving(int count) {
+        List<Integer> list=new ArrayList<>();
+        //Random random = new Random();
+        int random = (int)Math.random()* ++count;
+        for (int i = 0; i < count; i++) {
+            list.add(i+1);
+        }
+        long startTime = System.currentTimeMillis();
+        for (int i = 0; i < count; i++) {
+            list.get(random);
+            list.remove(random);
+        }
+        long finishTime = System.currentTimeMillis();
+        System.out.println("\nTime work = "+(finishTime-startTime)+" ms");
+    }
+
 
     public static void main(String[] args) {
-        checkAdding(100000);
+        //checkAdding(100000);
+        //checkReading(100);
+        checkRemoving(100);
     }
+
+
 }
 /*
 Написать классу публичные методы для проверки:
