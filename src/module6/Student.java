@@ -1,4 +1,4 @@
-package tasks;
+package module6;
 
 import java.util.*;
 
@@ -83,10 +83,10 @@ public class Student {
 //         printStudents(list,course);
         Set<Student> firstSet = new HashSet<>();
         firstSet.add(new Student("Marina", 7));
-        firstSet.add(new Student("Julias", 6));
+        firstSet.add(new Student("MarinaLOVE", 8));
         Set<Student> secondSet = new HashSet<>();
         secondSet.add(new Student("Marina", 7));
-        secondSet.add(new Student("Misha", 8));
+        secondSet.add(new Student("MarinaLOVE", 8));
         //System.out.println(union(firstSet,secondSet));
         System.out.println(intersect(firstSet, secondSet));
 
