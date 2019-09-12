@@ -42,12 +42,27 @@ public class Student {
         Set<Student> result = new HashSet<>();
         for (Student a : set1) {
             for (Student b : set2) {
-                if (set1.equals(set2)) {
+                if (a.equals(b)) {
                     result.add(a);
                 }
             }
         }
         return result;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Student student = (Student) o;
+        return course == student.course &&
+                Objects.equals(name, student.name);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(name, course);
     }
 
     @Override
