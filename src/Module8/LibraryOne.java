@@ -1,51 +1,59 @@
-package Module8;
+package module8;
 
 import java.util.Random;
-import java.util.Scanner;
 import java.util.concurrent.Semaphore;
 
+
 public class LibraryOne {
-    private static Semaphore semaphore;
-    private static int peopleCount;
-    private static int maxAmount;
-    Random random;
+    private int peopleCount;
+    private int maxAmount;
+    private final Semaphore semaphore;
 
-    public static void library() throws InterruptedException {
-        semaphore = new Semaphore(maxAmount);
-        System.out.println(Thread.currentThread().getName() + " пришел ко входу в библиотеку.");
-        if (semaphore.availablePermits()==0){
-            System.out.println(Thread.currentThread().getName()+"<-этот чувак ждет:)");
-        }
-        semaphore.acquire();
-        System.out.println(Thread.currentThread().getName() + " entered the library");
-
-        System.out.println(Thread.currentThread().getName() + " reading book");
-        Random random=new Random();
-      Thread.sleep(random.nextInt(4001) + 1000);
-        semaphore.release();
-        System.out.println(Thread.currentThread().getName() + " left the library");
+    public LibraryOne(int peopleCount, int maxAmount) {
+        this.peopleCount = peopleCount;
+        this.maxAmount = maxAmount;
+      semaphore = new Semaphore(maxAmount, true);
     }
 
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+    public void startThread() throws InterruptedException {
+        for (int i = 1; i <= peopleCount; i++) {
+            new Thread(new People(i)).start();
+            Thread.sleep(500);
 
-        System.out.println("Enter people count:");
-        peopleCount = scanner.nextInt();
-        System.out.println("Enter max amount of people that can be in the library:");
-        maxAmount = scanner.nextInt();
-        for (int i = 1; i < peopleCount; i++) {
+        }
+    }
 
-            new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    try {
-                        library();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+
+    public class People implements Runnable {
+        private int peopleNumber;
+
+
+        public People(int peopleNumber) {
+            this.peopleNumber = peopleNumber;
+        }
+
+        @Override
+        public void run() {
+
+            System.out.printf("Person №%d came to the entrance of the library.\n", peopleNumber);
+            try {
+                if (semaphore.availablePermits()==0) {
+                    System.out.printf("Person №%d waiting at the entrance to the library.\n", peopleNumber);
                 }
-            }).start();
-            System.out.println(Thread.currentThread().getName()+" поток создан - "+i);
+                semaphore.acquire();
+                System.out.printf("Person №%d entered the library.\n", peopleNumber);
+
+                System.out.printf("Person №%d reading book.\n", peopleNumber);
+
+
+                Random random = new Random();
+                Thread.sleep(random.nextInt(4001) + 1000);
+                semaphore.release();
+                System.out.printf("Person №%d left the library \n", peopleNumber);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
         }
     }
 }

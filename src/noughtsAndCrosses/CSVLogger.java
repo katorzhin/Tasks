@@ -3,6 +3,8 @@ package noughtsAndCrosses;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import static noughtsAndCrosses.NoughtsAndCrosses.searchWinner;
+
 public class CSVLogger {
     private String  fileName;
     public CSVLogger(String fileName) {
