@@ -1,4 +1,4 @@
-package lesoonThread.homeWork;
+package module8;
 
 public class Main {
     private static int peopleCount;

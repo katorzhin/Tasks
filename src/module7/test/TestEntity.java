@@ -2,22 +2,15 @@ package module7.test;
 
 public class TestEntity {
     enum TypeCar{highback,sedan,universal,cupe}
-    TypeCar typeCar;
-    public String model ;
     public int mileage;
+    public String model ;
+    public TypeCar typeCar;
 
-    public TestEntity(TypeCar typeCar, String model, int mileage) {
-        this.typeCar = typeCar;
-        this.model = model;
+    public TestEntity(int mileage, String model, TypeCar typeCar) {
         this.mileage = mileage;
+        this.model = model;
+        this.typeCar = typeCar;
     }
 
-    @Override
-    public String toString() {
-        return "TestEntity{" +
-                "typeCar=" + typeCar +
-                ", model='" + model + '\'' +
-                ", mileage=" + mileage +
-                '}';
-    }
+
 }

@@ -1,4 +1,4 @@
-package lesoonThread.homeWork;
+package module8;
 
 import java.util.Scanner;
 
